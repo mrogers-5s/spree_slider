@@ -22,6 +22,14 @@
     <% end %>
   </div>
 
+  <div class="col-md-12">
+    <%= f.field_container :taxon_id, class: ['form-group'] do %>
+      <%= f.label :taxon_id, Spree.t(:taxon) %>
+      <%= f.collection_select :taxon_id, Spree::Taxon.all, :id, :name, {include_blank: true}, {class: 'select2'} %>
+      <%= f.error_message_on :taxon_id %>
+    <% end %>
+  </div>
+
   <div class="col-md-6">
     <%= f.field_container :name do %>
       <%= f.label :name, t(:name) %><br>
@@ -33,6 +41,7 @@
     <%= f.field_container :link_url do %>
       <%= f.label :link_url, t(:link_url) %><br>
       <%= f.text_field :link_url, class: 'fullwidth form-control', placeholder: t('spree_slider.placeholder_link_url') %>
+      <div class="small">Only use this field if linking to a page that is neither a product nor a taxonomy search filter.</div>
     <% end %>
   </div>
 

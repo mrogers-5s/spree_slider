@@ -8,4 +8,10 @@ Spree::Core::Engine.routes.draw do
 
     resources :slide_locations
   end
+
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v1 do
+      get 'slider/:name', to: 'slide_locations#show'
+    end
+  end
 end
